@@ -74,7 +74,7 @@ Begin
       Loop
           LN$Num := LN$Num + 1 ;
           CASE
-            WHEN LN$Num between  xxxx 
+            WHEN LN$Num between (1,3)
                  THEN dbms_output.put_line( To_char( LN$Num ) || ' -> 1-3' ) ;
             WHEN LN$Num < 5 
                  THEN dbms_output.put_line( To_char( LN$Num ) || ' < 5' ) ;
@@ -82,6 +82,6 @@ Begin
                  dbms_output.put_line( To_char( LN$Num ) || ' >= 5' ) ;
           END CASE ;
          -- Condición de salida LN$Num = 5
-         xxxx ;
+         EXIT WHEN LN$Num = 5;
        End loop ;
 End ;
