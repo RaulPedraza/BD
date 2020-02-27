@@ -63,8 +63,8 @@ End ;
 
 -- EJERCICIO 3
 /* 
- Autor: xxxx
- Fecha: xxxxx
+ Autor: Raul
+ Fecha: 25/02/2020
  Descripcion: xxxxx
 */
 -- CASE MULTIPLES
@@ -74,10 +74,10 @@ Begin
       Loop
           LN$Num := LN$Num + 1 ;
           CASE
-            WHEN LN$Num between (1,3)
-                 THEN dbms_output.put_line( To_char( LN$Num ) || ' -> 1-3' ) ;
             WHEN LN$Num < 5 
                  THEN dbms_output.put_line( To_char( LN$Num ) || ' < 5' ) ;
+            WHEN LN$Num between 1 and 3
+                 THEN dbms_output.put_line( To_char( LN$Num ) || ' -> 1-3' ) ;
             ELSE 
                  dbms_output.put_line( To_char( LN$Num ) || ' >= 5' ) ;
           END CASE ;

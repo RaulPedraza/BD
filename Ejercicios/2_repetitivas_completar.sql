@@ -1,8 +1,9 @@
+set serveroutput on
 -- EJERCICIO 1
 /* 
  Autor: Raul
  Fecha: 25/02/2020
- Descripcion: Mostrar el valor de LN$I hasta que sea mayor que 2
+ Descripcion: Mostrar el valor de LN$I hasta que sea mayor que 3
 */
 -- LOOP
 Declare
@@ -39,8 +40,8 @@ End ;
  Descripcion: Mostrar el valor de LN$I 3 veces
 */
 --FOR
-Declare
-    LN$I BINARY_INTEGER := 0 ; 
+/*Declare
+    LN$I BINARY_INTEGER := 0 ; Sobra porque no se usa*/
 Begin
     -- FOR de 3 a 1
     For i in reverse 1..3
@@ -57,12 +58,13 @@ Begin
  Descripcion: Mostrar el valor de LN$I 3 veces
 */
 -- FOR  de 1 a 3 
-Declare
-    LN$I pls_integer := 0 ; 
+/*Declare
+    LN$I pls_integer := 0 ; Sobra porque no se usa*/
+Begin
     -- FOR  de 1 a 3 
-    For i in 1 .. 3
+    For i in 1..3
       Loop
         -- Sacar el valor de i
-        DBMS_OUTPUT.PUT_LINE(to_char( i ));
+        dbms_output.put_line( to_char( i ) ) ;
       End loop ;
 End ;
