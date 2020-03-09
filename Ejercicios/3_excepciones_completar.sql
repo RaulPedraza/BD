@@ -33,18 +33,18 @@ Declare
       LC$Cadena varchar2(10) ;
       LE$mas_long exception ;
       -- Asocio el mi nombre de excepción al código ORA-06502
-      XXXXX exception_init( XXXXX, -6502 ) ;
+      pragma exception_init( LE$mas_long, -6502 ) ;
 Begin
       LC$Cadena := rpad( ' ', 30) ;
 Exception
-      when LE$mas_long XXXX
+      when LE$mas_long then
           dbms_output.put_line( 'Cadena de caracteres demasiado larga') ;
 End ; 
 
 -- EJERCICIO 3
 /* 
- Autor: xxxx
- Fecha: xxxxx
+ Autor: Raul
+ Fecha: 09/03/2020
  Descripcion: xxxxx
 */
 
@@ -53,7 +53,7 @@ Declare
        LC$Cadena varchar2(10) ;
        LE$mas_long exception ;
        -- Asocio el mi nombre de excepción al código ORA-06502
-       pragma XXXXXXXX ;
+       pragma exception_init (LE$mas_long, -06502) ;
 Begin 
       -- Bloque para comprobar si se excede de la longitud, y si es así recortar
       Begin
@@ -64,13 +64,13 @@ Begin
             -- El control vuelve al programa principal
       End ;
       -- Sacar por pantalla el contenido de la variable LC$Cadena 
-      dbms_output.put_line(xxxxx) ;
+      dbms_output.put_line(LC$Cadena) ;
 End ;
 
 -- EJERCICIO 4
 /* 
- Autor: xxxx
- Fecha: xxxxx
+ Autor: Raul
+ Fecha: 09/03/2020
  Descripcion: xxxxx
 */
 Declare
@@ -88,17 +88,17 @@ Begin
       End ;
   
       dbms_output.put_line(LC$Cadena ) ;
-      EXCEPTION
+EXCEPTION
       WHEN OTHERS THEN
         --Generamos el código de error personalizado ORA-20000 'CADENA DEMASIADO LARGA'
-        XXXXXXXXXX ('-20000', 'CADENA DEMASIADO LARGA');
+        raise_application_error ('-20000', 'CADENA DEMASIADO LARGA');
 End ;
 
 
 -- EJERCICIO 5
 /* 
- Autor: xxxx
- Fecha: xxxxx
+ Autor: Raul
+ Fecha: 09/03/2020
  Descripcion: xxxxx
 */
 --EXCEPCIONES PROPIAS
@@ -106,19 +106,19 @@ End ;
 Declare
       LN$I number := 0 ;
       -- Asociar un nombre a mi excepcion
-      LE$Fin XXXXXXX;
+      LE$Fin exception;
 Begin
       Loop
         LN$I := LN$I + 1 ;
         dbms_output.put_line( to_char( LN$I) ) ;
         If LN$I > 2 Then
            -- Provocar mi excepcion LE$Fin
-           XXXX XXXXX ;
+           raise LE$Fin ;
        End if ;
      End loop ;
 Exception
     -- Tratar mi excepcion LE$Fin
-     When XXXXXX Then
+     When LE$Fin Then
          Null ;  --No hacer nada
 End ;
 
